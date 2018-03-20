@@ -1,14 +1,78 @@
-# Binaries for programs and plugins
-*.exe
-*.dll
-*.so
-*.dylib
+*.class
 
-# Test binary, build with `go test -c`
-*.test
+# Package Files #
+*.jar
+*.war
+*.ear
+target
+.classpath
+.project
+.settings
+dependency-reduced-pom.xml
+bin
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+# OSX
+*.DS_Store
 
-# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
-.glide/
+# IntelliJ IDE Project Files #
+*.iml
+*.idea
+*.versionsBackup
+pom.xml.versionsBackup
+jacoco.exec
+build
+.gradle
+!gradle-wrapper.jar
+
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# CDT- autotools 
+.autotools
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Scala IDE specific (Scala & Java development for Eclipse)
+.cache-main
+.scala_dependencies
+.worksheet
