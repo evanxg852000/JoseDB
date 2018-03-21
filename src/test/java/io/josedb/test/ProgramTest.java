@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 
 public class ProgramTest {
     @Test public void testSomeLibraryMethod() {
-        Program classUnderTest = new Program();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+        assertEquals("Should match version", "0.0.1", Program.VERSION);
     }
 }
