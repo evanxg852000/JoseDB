@@ -22,14 +22,14 @@ public class WebRequestHandler extends AbstractHandler{
 			throws IOException, ServletException {
 		super.handle(target, baseRequest, request, response);
 		
-		//match route and dispatch
-		
-		
-		
 		response.setContentType("text/html; charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println("Hello From JoseDB!");
-        baseRequest.setHandled(true);
+		response.setStatus(HttpServletResponse.SC_OK);
+		response.getWriter().println("Hello From JoseDB!");	
+		baseRequest.setHandled(true);
+		
+		//match route and dispatch
+		boolean handled = this.router.route(request, response);
+        //baseRequest.setHandled(handled);
 	}
 
 }

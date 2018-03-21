@@ -1,6 +1,7 @@
 package io.josedb;
 
-import io.josedb.web.Config;
+
+import io.josedb.utils.Config;
 import io.josedb.web.WebServer;
 
 public class Program {
@@ -11,7 +12,7 @@ public class Program {
 		
 
 		try {
-			Config config = Config.load("config.props");
+			Config config = Config.load("config.properties");
 			new WebServer(config).start();
 		} catch (Exception e) {
 			e.printStackTrace();

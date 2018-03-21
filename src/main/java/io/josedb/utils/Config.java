@@ -1,11 +1,13 @@
-package io.josedb.web;
+package io.josedb.utils;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
 	private Properties properties;
 	
-	public Config() {
+	private Config() {
 		this.properties = new Properties();
 	}
 	
@@ -50,8 +52,15 @@ public class Config {
 	}
 	
 	public static Config load(String path){
-		//TODO
-		return null;
+		Config config= new Config();
+		try {
+			InputStream fileInStream = new FileInputStream(path);
+			config.properties.load(fileInStream);
+		} catch (Exception e) {
+			// TODO Log error
+			e.printStackTrace();
+		}
+		return config;
 	}
 
 }
