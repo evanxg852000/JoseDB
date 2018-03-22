@@ -1,4 +1,4 @@
-package io.josedb.web;
+package io.josedb.framework.web;
 
 import java.io.IOException;
 
@@ -12,9 +12,8 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
 public class WebRequestHandler extends AbstractHandler{
 	private WebRequestRouter router;
 	
-	public WebRequestHandler() {
-		// TODO create and configure routing system here
-		this.router = new WebRequestRouter();
+	public WebRequestHandler(WebRequestRouter router) {
+		this.router = router;
 	}
 	
 	@Override
@@ -22,14 +21,9 @@ public class WebRequestHandler extends AbstractHandler{
 			throws IOException, ServletException {
 		super.handle(target, baseRequest, request, response);
 		
-		response.setContentType("text/html; charset=utf-8");
-		response.setStatus(HttpServletResponse.SC_OK);
-		response.getWriter().println("Hello From JoseDB!");	
-		baseRequest.setHandled(true);
-		
-		//match route and dispatch
+		// Match route and dispatch request to handler
 		boolean handled = this.router.route(request, response);
-        //baseRequest.setHandled(handled);
+        baseRequest.setHandled(handled);
 	}
 
 }

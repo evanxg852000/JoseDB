@@ -1,4 +1,4 @@
-package io.josedb.web;
+package io.josedb.framework.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class WebRequestRouter {
 		this.routes = new ArrayList<Route>();
 	}
 	
-	public void addRoute(String spec, HttpRequestHandler handler, String[] methods) {
+	public void addRoute(String spec, HttpRequestHandler handler, List<String> methods) {
 		Route route = new Route(spec, handler, methods);
 		if(!route.isOk()){
 			return; // TODO log this as error
@@ -26,12 +26,8 @@ public class WebRequestRouter {
 	}
 	
 	public boolean route(HttpServletRequest request, HttpServletResponse response){
-		// TODO extract request info
-		String url="";
-		String method="";
-		System.out.println("URL: "+ request.getPathInfo());
-		System.out.println("METHOD: "+ request.getMethod());
-		System.out.println("PARAMS: "+ request.getParameterMap());
+		String url= request.getPathInfo();
+		String method = request.getMethod();
 		
 		Matcher matcher;
 		for (Route route : this.routes) {

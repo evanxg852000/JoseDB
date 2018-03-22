@@ -1,4 +1,4 @@
-package io.josedb.web;
+package io.josedb.framework.web;
 
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Handler;
@@ -29,13 +29,18 @@ public class WebServer {
         https.setPort(config.getInt("httpsPort"));
         
         this.jettyServer.setConnectors(new Connector[] {http, https});
-        
+	}
+
+	public Config getConfig(){
+		return this.config;
+	}
+	
+	public void mountRouter(WebRequestRouter router) {
 		// Add base handlers
 		HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { new WebRequestHandler(), new DefaultWebRequestHandler() });
-        
-        
-        this.jettyServer.setHandler(handlers);
+		handlers.setHandlers(new Handler[] { new WebRequestHandler(router), new DefaultWebRequestHandler() });
+		
+		this.jettyServer.setHandler(handlers);
 	}
 	
 	public void start() throws Exception{

@@ -10,9 +10,9 @@ dependencies {
     compile 'org.eclipse.jetty:jetty-server:9.4.0.M0'
     compile 'org.xerial:sqlite-jdbc:3.21.0.1'
     compile 'org.apache.lucene:lucene-core:7.2.1'
+    compile 'com.google.code.gson:gson:2.8.2'
+      
     
-    
-
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'

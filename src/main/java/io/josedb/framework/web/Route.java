@@ -1,7 +1,6 @@
-package io.josedb.web;
+package io.josedb.framework.web;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -12,7 +11,7 @@ public class Route{
 	private List<String> supportedMethods;
 	private HttpRequestHandler handler;
 	
-	public Route(String spec, HttpRequestHandler handler, String[] methods) {
+	public Route(String spec, HttpRequestHandler handler, List<String> methods) {
 		this.spec = spec;
 		this.supportedMethods = new ArrayList<String>();
 		for (String item : methods) {
@@ -60,33 +59,34 @@ public class Route{
 		/*
 		 * /test
 		 * /test/{name?}
-		 * ^custom_name\\.(?P<format>[a-z0-9-_]+)/?$"
-		 * ^project_config/$
-		 * ^project_config/(?P<product>\w+)/$
-		 * ^project_config/(?P<product>\w+)/(?P<project_id>\w+)/$
+		 * ^/project_config$
+		 * ^/project_config(\/(?<product>\w+))$
+		 * ^/project_config(\/(?<product>\w+))(\/(?<project_id>\w+)?)$
 		 */		
 		List<String> parsedSpec = new ArrayList<String>();
 		
 		spec = spec.trim();
 		spec = (spec.startsWith("/"))? spec.substring(1) : spec;
-		spec = (spec.endsWith("/"))? spec.substring(0, spec.length()) : spec;
+		spec = (spec.endsWith("/"))? spec.substring(0, spec.length()-1) : spec;
 		String[] parts = spec.split("/");
 		String pattern = "^";
 		for (String part : parts) {
 			if(part.startsWith("{") && part.endsWith("}")){
 				part = part.substring(1);
-				part = part.substring(0, part.length());
-				parsedSpec.add(part);
+				part = part.substring(0, part.length()-1);
 				boolean optionalParam = false;
 				if(part.startsWith("?")){
 					part = part.substring(1);
 					optionalParam = true;
 				}
-				pattern +="/(?P<"+part+">\\w+)";
+				parsedSpec.add(part);
+				pattern +="(\\/(?<"+part+">\\w+)";
 				if(optionalParam)
-					pattern +="?";
+					pattern +="?)";
+				else
+					pattern +=")";
 			}else{
-				pattern +="/"+part;
+				pattern +="\\/"+part;
 			}
 		}
 		pattern += "$";
