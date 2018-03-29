@@ -5,13 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-//import org.eclipse.jetty.util.log.Log;
-//import org.eclipse.jetty.util.log.Logger;
-
-
 
 public class DefaultWebRequestHandler extends AbstractHandler{
-	//TODO private static final Logger LOG = Log.getLogger(DefaultWebRequestHandler.class);
 	
 	@Override
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) {

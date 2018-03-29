@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
-import io.josedb.JoseDBInfo;
 import io.josedb.framework.web.HttpRequestHandler;
+import io.josedb.utils.JoseDbInfo;
 
 public class HomeRequestHandler extends HttpRequestHandler{
 
@@ -22,9 +22,9 @@ public class HomeRequestHandler extends HttpRequestHandler{
 		
 		//Gson response = new G
 		JsonObject rspObj = new JsonObject();
-		rspObj.addProperty("version", JoseDBInfo.getVersion());
-		rspObj.addProperty("message", JoseDBInfo.getMessage());
-		rspObj.addProperty("tagline", JoseDBInfo.getTagLine());
+		rspObj.addProperty("version", JoseDbInfo.getVersion());
+		rspObj.addProperty("message", JoseDbInfo.getMessage());
+		rspObj.addProperty("tagline", JoseDbInfo.getTagLine());
 		
 		 //Gson rspObj = new GsonBuilder().create();
 		 //GSon

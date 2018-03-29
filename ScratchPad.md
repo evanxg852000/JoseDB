@@ -1,3 +1,10 @@
+stop all java process:
+ wmic process where "name like '%java%'" delete
+ 
+load base folder & config
+if path given switch to using path and override any config found there
+ 
+
 https://github.com/haywire/haywire
 https://github.com/google/leveldb
 https://github.com/jwerle/libuv-http

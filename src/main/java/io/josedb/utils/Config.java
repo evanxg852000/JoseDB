@@ -10,10 +10,18 @@ public class Config {
 	private Config() {
 		this.properties = new Properties();
 	}
-	
+
 	public String get(String proName) {
 		return this.properties.getProperty(proName, null);
 	}
+	
+	public void overrideWith(Config other){
+		String key;
+		for(Object keyObj : other.properties.keySet()){
+			key = (String) keyObj;
+			this.properties.put(key, other.get(key));
+		}
+	} 
 	
 	public boolean getBool(String proName, boolean DefaultValue){
 		String str = this.get(proName);

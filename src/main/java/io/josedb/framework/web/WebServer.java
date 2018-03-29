@@ -2,6 +2,7 @@ package io.josedb.framework.web;
 
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.NCSARequestLog;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -17,7 +18,15 @@ public class WebServer {
 		this.config = config;
 		this.jettyServer = new Server();
 		
-		//TODO configure server & connectors
+		// request logger
+		NCSARequestLog requestLogger = new NCSARequestLog("logs.requests.yyyy_mm_dd.log");
+		requestLogger.setAppend(true);
+		requestLogger.setExtended(false);
+		requestLogger.setLogTimeZone("GMT");
+		requestLogger.setLogLatency(true);
+		requestLogger.setRetainDays(90);
+		this.jettyServer.setRequestLog(requestLogger);
+		
 		// http connector
         ServerConnector http = new ServerConnector(this.jettyServer);
         http.setHost(config.get("host"));
