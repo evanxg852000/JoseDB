@@ -19,7 +19,7 @@ public class WebRequestHandler extends AbstractHandler{
 	@Override
 	public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		super.handle(target, baseRequest, request, response);
+		//super.handle(target, baseRequest, request, response);
 		
 		// Match route and dispatch request to handler
 		boolean handled = this.router.route(request, response);

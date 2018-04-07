@@ -22,7 +22,9 @@ public class HomeRequestHandler extends HttpRequestHandler{
 		
 		//Gson response = new G
 		JsonObject rspObj = new JsonObject();
+		rspObj.addProperty("product", JoseDbInfo.getProduct());
 		rspObj.addProperty("version", JoseDbInfo.getVersion());
+		rspObj.addProperty("vendor", JoseDbInfo.getVendor());
 		rspObj.addProperty("message", JoseDbInfo.getMessage());
 		rspObj.addProperty("tagline", JoseDbInfo.getTagLine());
 		

@@ -3,13 +3,21 @@ package io.josedb;
 import io.josedb.framework.web.WebServer;
 import io.josedb.utils.JoseDbInfo;
 import io.josedb.utils.JoseDbLogger;
+import io.josedb.utils.JoseDbTargetDir;
 import io.josedb.web.Routes;
 
 public class Program {
+	
 	public static void main(String[] args) {
-		// Parse command line args
+		System.err.println(args);
+		
+		// Parse command line arguments & init config
 		if(!JoseDbInfo.init(args)){
-			//Log
+			System.exit(0);
+		}
+		
+		// Check (initialize f necessary) target directory
+		if(!JoseDbTargetDir.checkTargetDirectory()){
 			System.exit(0);
 		}
 		
